@@ -27,6 +27,17 @@ router.get('/new', (req, res)=>{
     res.render('celebrities/new')
 })
 
+router.post('/:id/delete', (req, res) => {
+    Celebrity.findByIdAndDelete(req.params.id)
+        .then((celebrity)=>{
+            res.redirect('/celebrities/')
+        })
+        .catch((err)=> {
+            console.log("An error has ocurred: "+ err)
+            res.redirect('/celebrities/')
+        })
+})
+
 router.get('/:id', (req, res) => {
     Celebrity.findById(req.params.id)
         .then((celebrity) => {
