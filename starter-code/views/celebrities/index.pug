@@ -1,0 +1,9 @@
+h2 Lista de celebridades
+
+a(href="/celebrities/new")
+    p Agregar nueva celebridad
+each celebrity in celebrities
+    a(href=`/celebrities/${celebrity._id}`)
+        h3=celebrity.name
+        p=celebrity.occupation
+        p(style="font-style: oblique;")=celebrity.catchPhrase
