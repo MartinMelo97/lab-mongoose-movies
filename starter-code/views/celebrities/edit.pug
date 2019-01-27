@@ -1,0 +1,6 @@
+h2 Editar usuario #{celebrity.name}
+form(action=`/celebrities/${celebrity._id}`, method="post")
+    input(type="text", name="name", placeholder="Nombre", value=celebrity.name)
+    input(type="text", name="occupation", placeholder="Ocupación", value=celebrity.occupation)
+    input(type="text", name="catchPhrase", placeholder="Frase mamalona", value=celebrity.catchPhrase)
+    button(type="submit") Editar celebridad

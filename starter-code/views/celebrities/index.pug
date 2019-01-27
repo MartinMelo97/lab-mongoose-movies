@@ -9,3 +9,5 @@ each celebrity in celebrities
         p(style="font-style: oblique;")=celebrity.catchPhrase
         form(action=`/celebrities/${celebrity._id}/delete`, method="post")
             button(type="submit") Eliminar comediante
+        a(href=`/celebrities/${celebrity._id}/edit`)
+            button Editar celebridad

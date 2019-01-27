@@ -38,6 +38,28 @@ router.post('/:id/delete', (req, res) => {
         })
 })
 
+router.get('/:id/edit', (req, res) => {
+    Celebrity.findById(req.params.id)
+        .then((celebrity)=>{
+            res.render('celebrities/edit', {celebrity})
+        })
+        .catch((err)=>{
+            console.log('An error has ocurred: ' + err)
+            res.redirect('/celebrities/')
+        })
+})
+
+router.post('/:id', (req, res) => {
+    Celebrity.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
+        .then((celebrity) => {
+            res.redirect(`/celebrities/${celebrity._id}`)
+        })
+        .catch((err)=>{
+            console.log('An error has ocurred '+err)
+            res.redirect(`/celebrities/${celebrity._id}`)
+        })
+})
+
 router.get('/:id', (req, res) => {
     Celebrity.findById(req.params.id)
         .then((celebrity) => {
@@ -45,6 +67,7 @@ router.get('/:id', (req, res) => {
         })
         .catch((err)=>{
             console.log("An error has ocurred " + err)
+            res.redirect('/celebrities/')
         })
 })
 
